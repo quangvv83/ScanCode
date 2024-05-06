@@ -1,0 +1,204 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="CheckBoxContentBrush" Color="#142834"/>
+    <!--Default-->
+    <SolidColorBrush x:Key="Checkbox.Default.Border" Color="#DFE1E6"/>
+    <SolidColorBrush x:Key="Checkbox.Default.Background" Color="#FAFBFC"/>
+    <SolidColorBrush x:Key="Checkbox.Default.BorderChecked" Color="#ED1C24"/>
+    <SolidColorBrush x:Key="Checkbox.Default.BackgroundChecked" Color="#ED1C24"/>
+    <SolidColorBrush x:Key="Checkbox.Default.OptionMark" Color="#FAFBFC"/>
+    <!--Disabled-->
+    <SolidColorBrush x:Key="Checkbox.Disabled.Border" Color="#F4F5F7"/>
+    <SolidColorBrush x:Key="Checkbox.Disabled.Background" Color="#F4F5F7"/>
+    <SolidColorBrush x:Key="Checkbox.Disabled.OptionMark" Color="#A5ADBA"/>
+    <!--Hover-->
+    <SolidColorBrush x:Key="Checkbox.Hover.Border" Color="#DFE1E6"/>
+    <SolidColorBrush x:Key="Checkbox.Hover.Background" Color="#EBECF0"/>
+    <SolidColorBrush x:Key="Checkbox.Hover.BorderChecked" Color="#FF5630"/>
+    <SolidColorBrush x:Key="Checkbox.Hover.BackgroundChecked" Color="#FF5630"/>
+    <SolidColorBrush x:Key="Checkbox.Hover.OptionMark" Color="#FAFBFC"/>
+    <!--Press-->
+    <SolidColorBrush x:Key="Checkbox.Pressed.Border" Color="#E9F4F9"/>
+    <SolidColorBrush x:Key="Checkbox.Pressed.Background" Color="#E9F4F9"/>
+    <SolidColorBrush x:Key="Checkbox.Pressed.BorderChecked" Color="#E9F4F9"/>
+    <SolidColorBrush x:Key="Checkbox.Pressed.BackgroundChecked" Color="#E9F4F9"/>
+    <SolidColorBrush x:Key="Checkbox.Pressed.OptionMark" Color="#ED1C24"/>
+
+    <Style x:Key="TriggerManagerToggleCheckboxStyle" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="checkBoxBorder" Height="14" Width="24" CornerRadius="7" 
+                                    BorderBrush="{x:Null}" BorderThickness="0" 
+                                    Background="#E21C24" Grid.Column="0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid x:Name="markGrid">
+                                <Ellipse x:Name="optionMark" Margin="2" HorizontalAlignment="Right" Fill="White" Height="10" Width="10"/>
+                            </Grid>
+                        </Border>
+                        <!--<ContentPresenter x:Name="contentPresenter" Visibility="Collapsed"
+                         Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Opacity" Value="0.7"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter Property="HorizontalAlignment" TargetName="optionMark" Value="Left"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="#BEBEBE"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TriggerManagerCheckBoxStyle" TargetType="{x:Type CheckBox}" >
+        <Setter Property="Background" Value="{StaticResource Checkbox.Default.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Checkbox.Default.Border}" />
+        <Setter Property="BorderThickness" Value="2" />
+
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+
+        <Setter Property="Foreground" Value="{StaticResource CheckBoxContentBrush}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="TextBlock.LineHeight" Value="22" />
+        <Setter Property="TextBlock.LineStackingStrategy" Value="BlockLineHeight" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="checkBoxBorder" Grid.Column="0"
+                                CornerRadius="3"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" 
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                Width="14" Height="14">
+                            <Grid x:Name="markGrid">
+                                <Path x:Name="optionMark"
+                                      VerticalAlignment="Center" 
+                                      HorizontalAlignment="Center"
+                                      Data="M1.71929 2.30529C1.62704 2.20978 1.5167 2.1336 1.39469 2.08119C1.27269 2.02878 1.14147 2.00119 1.00869 2.00004C0.87591 1.99888 0.744231 2.02419 0.621334 2.07447C0.498438 2.12475 0.386786 2.199 0.292893 2.29289C0.199001 2.38679 0.124748 2.49844 0.0744668 2.62133C0.0241859 2.74423 -0.00111606 2.87591 3.77564e-05 3.00869C0.00119157 3.14147 0.0287774 3.27269 0.0811864 3.39469C0.133595 3.5167 0.209778 3.62704 0.305288 3.71929L2.30529 5.71929C2.49282 5.90676 2.74712 6.01207 3.01229 6.01207C3.27745 6.01207 3.53176 5.90676 3.71929 5.71929L7.71929 1.71929C7.8148 1.62704 7.89098 1.5167 7.94339 1.39469C7.9958 1.27269 8.02339 1.14147 8.02454 1.00869C8.02569 0.87591 8.00039 0.744231 7.95011 0.621335C7.89983 0.498438 7.82558 0.386787 7.73168 0.292894C7.63779 0.199001 7.52614 0.124748 7.40324 0.0744673C7.28035 0.0241864 7.14867 -0.00111606 7.01589 3.77557e-05C6.88311 0.00119157 6.75189 0.0287779 6.62988 0.0811869C6.50788 0.133596 6.39754 0.209779 6.30529 0.305289L3.01229 3.59829L1.71929 2.30529Z" 
+                                      Fill="{StaticResource Checkbox.Default.OptionMark}" Opacity="0" Stretch="None"/>
+                                <Path x:Name="indeterminateMark"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Data="M7 0H1C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2H7C7.55228 2 8 1.55228 8 1C8 0.447715 7.55228 0 7 0Z"
+                                      Fill="{StaticResource Checkbox.Default.OptionMark}" Opacity="0" Stretch="None"/>
+                            </Grid>
+                        </Border>
+                        <ContentPresenter x:Name="contentPresenter" Margin="8,0,0,0"
+                                          Grid.Column="1"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Disabled.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Checkbox.Disabled.OptionMark}"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Checkbox.Disabled.OptionMark}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                            <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="0"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Default.BackgroundChecked}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                            <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="0"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Default.BorderChecked}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Default.BackgroundChecked}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsChecked" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Hover.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Hover.Border}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="2"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="true"/>
+                                <Condition Property="IsChecked" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.Border}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="2"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Hover.BackgroundChecked}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="0"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Checkbox.Hover.OptionMark}"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Checkbox.Hover.OptionMark}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="true"/>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.BackgroundChecked}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.BorderChecked}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="2"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Checkbox.Pressed.OptionMark}"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Checkbox.Pressed.OptionMark}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsChecked" Value="{x:Null}"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Hover.BackgroundChecked}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="0"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Checkbox.Hover.OptionMark}"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Checkbox.Hover.OptionMark}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="true"/>
+                                <Condition Property="IsChecked" Value="{x:Null}"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.BackgroundChecked}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource Checkbox.Pressed.BorderChecked}"/>
+                            <Setter Property="BorderThickness" TargetName="checkBoxBorder" Value="2"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Checkbox.Pressed.OptionMark}"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource Checkbox.Pressed.OptionMark}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

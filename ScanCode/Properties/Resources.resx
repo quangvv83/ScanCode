@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivityCount_Header" xml:space="preserve">
+    <value>Activity count</value>
+  </data>
+  <data name="AddMore_Label" xml:space="preserve">
+    <value>Add more</value>
+  </data>
+  <data name="AddProject_Label" xml:space="preserve">
+    <value>Add project</value>
+  </data>
+  <data name="AnalyzingProject_Label" xml:space="preserve">
+    <value>Analyzing projects ...</value>
+  </data>
+  <data name="CannotInsertOrRemoveVBAModuleCheckTrustSettings" xml:space="preserve">
+    <value>CannotInsertOrRemoveVBAModuleCheckTrustSettings</value>
+  </data>
+  <data name="ChooseProject_Desc" xml:space="preserve">
+    <value>Click to choose project file or drag it into this window</value>
+  </data>
+  <data name="ChooseProject_Title" xml:space="preserve">
+    <value>Choose your project to analyze:</value>
+  </data>
+  <data name="ColumnExist" xml:space="preserve">
+    <value>ColumnExist</value>
+  </data>
+  <data name="ColumnNotExist" xml:space="preserve">
+    <value>ColumnNotExist</value>
+  </data>
+  <data name="ComplexityRank_Header" xml:space="preserve">
+    <value>Complexity Rank</value>
+  </data>
+  <data name="ConditionCount_Header" xml:space="preserve">
+    <value>Condition Count</value>
+  </data>
+  <data name="Confirm_Label" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="EstEffort_Header" xml:space="preserve">
+    <value>Est. Effort(MD)</value>
+  </data>
+  <data name="Exception_ColumnNumberNotValid" xml:space="preserve">
+    <value>Column number must be positive.</value>
+  </data>
+  <data name="Exception_CouldNot_InsertImage" xml:space="preserve">
+    <value>Exception_CouldNot_InsertImage</value>
+  </data>
+  <data name="Exception_Couldnot_SetBorder" xml:space="preserve">
+    <value>Exception_Couldnot_SetBorder</value>
+  </data>
+  <data name="Exception_Couldnot_SetColor" xml:space="preserve">
+    <value>Exception_Couldnot_SetColor</value>
+  </data>
+  <data name="Exception_FileNotFound_WithFormat" xml:space="preserve">
+    <value>Exception_FileNotFound_WithFormat</value>
+  </data>
+  <data name="Exception_NotImageFile" xml:space="preserve">
+    <value>Exception_NotImageFile</value>
+  </data>
+  <data name="Exception_ProjectFileCannotBeNull" xml:space="preserve">
+    <value>Project file cannot be empty</value>
+  </data>
+  <data name="Exception_SavingDirectoryNotFound" xml:space="preserve">
+    <value>Saving directory not found</value>
+  </data>
+  <data name="Exception_SavingFileCannotBeNull" xml:space="preserve">
+    <value>Saving file cannot be empty</value>
+  </data>
+  <data name="Exception_SavingFileNameNotValid" xml:space="preserve">
+    <value>Saving file's name not valid</value>
+  </data>
+  <data name="Exception_TemplateFileNotFound" xml:space="preserve">
+    <value>Template file not found</value>
+  </data>
+  <data name="ExportingProject_Label" xml:space="preserve">
+    <value>Exporting projects ...</value>
+  </data>
+  <data name="Export_Title" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="GetStarted_Label" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="Home_Title" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Index_Header" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="InsertColumnTableException_InsertColumnFail" xml:space="preserve">
+    <value>InsertColumnTableException_InsertColumnFail</value>
+  </data>
+  <data name="LicenseFile_Label" xml:space="preserve">
+    <value>License file:</value>
+  </data>
+  <data name="LicenseInvalid_Label" xml:space="preserve">
+    <value>Your license is invalid. Please retry with another files.</value>
+  </data>
+  <data name="LicenseValid_Label" xml:space="preserve">
+    <value>Your license is valid.</value>
+  </data>
+  <data name="Location_Header" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LockedRangeException" xml:space="preserve">
+    <value>LockedRangeException</value>
+  </data>
+  <data name="MessageBox_CancelLabel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="MessageBox_NoLabel" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MessageBox_YesLabel" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="NewScan_Title" xml:space="preserve">
+    <value>New Scan</value>
+  </data>
+  <data name="NextTime_Label" xml:space="preserve">
+    <value>Maybe next time</value>
+  </data>
+  <data name="NoExcelFileIsCurrentlyOpened" xml:space="preserve">
+    <value>NoExcelFileIsCurrentlyOpened</value>
+  </data>
+  <data name="ProcessPoint_Header" xml:space="preserve">
+    <value>Process Points(MM)</value>
+  </data>
+  <data name="ProjectFile_Alert" xml:space="preserve">
+    <value>Must be project.json file</value>
+  </data>
+  <data name="ProjectLevel_Header" xml:space="preserve">
+    <value>Project Level</value>
+  </data>
+  <data name="ProjectName_Header" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="ReadCellException" xml:space="preserve">
+    <value>ReadCellException</value>
+  </data>
+  <data name="ReadOnlyCannotSaveException" xml:space="preserve">
+    <value>ReadOnlyCannotSaveException</value>
+  </data>
+  <data name="ReadRangeException" xml:space="preserve">
+    <value>ReadRangeException</value>
+  </data>
+  <data name="ReadyToScanTitle" xml:space="preserve">
+    <value>Ready-to-scan Projects</value>
+  </data>
+  <data name="ResultSummary_Title" xml:space="preserve">
+    <value>Result Summary</value>
+  </data>
+  <data name="SaveWorkbookException" xml:space="preserve">
+    <value>SaveWorkbookException</value>
+  </data>
+  <data name="ScannedTime_Label" xml:space="preserve">
+    <value>Scanned Time: </value>
+  </data>
+  <data name="SelectProject_Description" xml:space="preserve">
+    <value>Please select at least one project to start scanning.</value>
+  </data>
+  <data name="SelectProject_Label" xml:space="preserve">
+    <value>Select project from your computer</value>
+  </data>
+  <data name="SelectWorkspace_Description" xml:space="preserve">
+    <value>Select workspace</value>
+  </data>
+  <data name="SheetDoesNotExist" xml:space="preserve">
+    <value>SheetDoesNotExist</value>
+  </data>
+  <data name="SheetNotExist" xml:space="preserve">
+    <value>Sheet does not exist</value>
+  </data>
+  <data name="SheetsRetrievalException" xml:space="preserve">
+    <value>SheetsRetrievalException</value>
+  </data>
+  <data name="SomeErrors_Title" xml:space="preserve">
+    <value>There might be some errors. Please try again.</value>
+  </data>
+  <data name="StartScan_Label" xml:space="preserve">
+    <value>Start scanning</value>
+  </data>
+  <data name="TotalActivities_Description" xml:space="preserve">
+    <value>Total activities in all projects</value>
+  </data>
+  <data name="TotalActivities_Title" xml:space="preserve">
+    <value>Total activities</value>
+  </data>
+  <data name="TotalEffort_Description" xml:space="preserve">
+    <value>Total effort to convert by man day</value>
+  </data>
+  <data name="TotalEffort_Title" xml:space="preserve">
+    <value>Total effort</value>
+  </data>
+  <data name="TotalWorkflows_Description" xml:space="preserve">
+    <value>Total workflows in all projects</value>
+  </data>
+  <data name="TotalWorkflows_Title" xml:space="preserve">
+    <value>Total workflows</value>
+  </data>
+  <data name="TryAgain_Label" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="UploadLicense_Desc" xml:space="preserve">
+    <value>Please upload your license file to start</value>
+  </data>
+  <data name="Welcome_Title" xml:space="preserve">
+    <value>Welcome to Analyzer</value>
+  </data>
+  <data name="Window_Title" xml:space="preserve">
+    <value>Analyzer</value>
+  </data>
+  <data name="WorkbookNotExist" xml:space="preserve">
+    <value>Workbook does not exist</value>
+  </data>
+  <data name="WorkbookNotSetOrClosed" xml:space="preserve">
+    <value>WorkbookNotSetOrClosed</value>
+  </data>
+  <data name="WorkflowCount_Header" xml:space="preserve">
+    <value>Workflow Count</value>
+  </data>
+  <data name="WriteCellException" xml:space="preserve">
+    <value>WriteCellException</value>
+  </data>
+  <data name="WriteDataTableAtRangeException" xml:space="preserve">
+    <value>WriteDataTableAtRangeException</value>
+  </data>
+</root>

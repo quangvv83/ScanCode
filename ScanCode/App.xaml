@@ -1,0 +1,22 @@
+<Application x:Class="ScanCode.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:ScanCode.ViewModel" mc:Ignorable="d" 
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <vm:ViewModelLocator x:Key="ModelLocator" d:IsDataSource="True" />
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Fluent;component/Themes/Generic.xaml" />
+        <ResourceDictionary Source="Themes/Icons.xaml" />
+        <!--<ResourceDictionary Source="Themes/Images.xaml" />-->
+        <ResourceDictionary Source="Themes/Common.xaml" />
+        <ResourceDictionary Source="Themes/Generic.xaml" />
+        <ResourceDictionary Source="Themes/Controls/Button.xaml" />
+        <ResourceDictionary Source="Themes/Controls/Checkbox.xaml" />
+        <ResourceDictionary Source="Themes/Controls/DataGrid.xaml" />
+        <ResourceDictionary Source="Themes/Controls/TextBox.xaml" />
+        <ResourceDictionary Source="Themes/Controls/ScrollBar.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

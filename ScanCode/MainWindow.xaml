@@ -1,0 +1,324 @@
+﻿<mah:MetroWindow x:Class="ScanCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:res="clr-namespace:ScanCode.Properties"
+        xmlns:conv="clr-namespace:ScanCode.Converters"
+        xmlns:uc="clr-namespace:ScanCode.UserControls"
+        xmlns:be="clr-namespace:ScanCode.Behaviors"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:fluent="urn:fluent-ribbon"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource ModelLocator}, Path=Main}"
+        Background="{Binding Path=WindowBackgroundColor}"
+        Style="{StaticResource MetroWindowStyle}">
+    <mah:MetroWindow.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ChooseProjectLabelStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="Medium" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="Foreground" Value="#33476E" />
+            </Style>
+            <Style x:Key="SelectFileFrameStyle" TargetType="{x:Type Border}">
+                <Setter Property="Background" Value="#F9F9F9" />
+                <Setter Property="Margin" Value="0,20,0,0" />
+                <Setter Property="Padding" Value="24" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Width" Value="469" />
+            </Style>
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}"/>
+            <conv:BoolToInvisibilityConverter x:Key="BoolToInvisibilityConverter" />
+            <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <conv:StatusToVisibilityConverter x:Key="StatusToVisibilityConverter" />
+            <conv:RowIndexConverter x:Key="RowIndexConverter" />
+            <conv:CodeToColorConverter x:Key="CodeToColorConverter" />
+            <DataTemplate x:Key="LoadingPanel">
+                <Grid Background="White">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock
+                            Margin="0,15"
+                            FontSize="18" 
+                            LineHeight="25"
+                            TextTrimming ="CharacterEllipsis"
+                            Foreground="{StaticResource MainText}"
+                            Text="{Binding}" />
+                        <uc:LoadingIndicator Style="{StaticResource LoadingIndicatorThreeDotsStyleKey}" SpeedRatio="2" IsActive="True" Mode="ThreeDots"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </mah:MetroWindow.Resources>
+    <Grid>
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Ribbon button - Header -->
+            <Border Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" Direction="270" ShadowDepth="5" Opacity="0.05" BlurRadius="5" />
+                </Border.Effect>
+                <fluent:Ribbon Grid.Row="0">
+                    <fluent:Ribbon.Resources>
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonTabItem.BorderBrush" Color="Transparent"/>
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.LabelTextBrush" Color="{StaticResource NormalTextColor}"/>
+                        <Style TargetType="{x:Type fluent:RibbonTabControl}">
+                            <Setter Property="Background" Value="#F9F9F9"/>
+                        </Style>
+                        <Style TargetType="{x:Type fluent:RibbonTabItem}">
+                            <Setter Property="Height" Value="36"/>
+                            <Setter Property="MinWidth" Value="50"/>
+                            <Setter Property="Margin" Value="0,0,10,0"/>
+                            <Setter Property="ActiveTabBackground" Value="White"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="TextBlock.LineHeight" Value="16"/>
+                            <Setter Property="TextBlock.LineStackingStrategy" Value="BlockLineHeight"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="False">
+                                    <Setter Property="Background" Value="#F2F2F2"/>
+                                    <Setter Property="Foreground" Value="#8D9AA2"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.Button.MouseOver.Background" Color="#FFF5F5"/>
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.Button.MouseOver.BorderBrush" Color="Transparent"/>
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.Button.Pressed.Background" Color="White" />
+                        <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.Button.Pressed.BorderBrush" Color="Transparent" />
+                    </fluent:Ribbon.Resources>
+                    <fluent:RibbonTabItem Header="{x:Static res:Resources.Home_Title}">
+                        <fluent:RibbonGroupBox Margin="0,8,0,0" FontWeight="Medium">
+                            <fluent:Button Header="{x:Static res:Resources.NewScan_Title}" SizeDefinition="Large, Middle, Small" Margin="10,0"
+                                LargeIcon="{StaticResource Scan_Icon}"
+                                Icon="{StaticResource Scan_Icon}"
+                                Command="{Binding NewScanCommand}" />
+                            <fluent:Button Header="{x:Static res:Resources.Export_Title}" SizeDefinition="Large, Middle, Small" Margin="10,0"
+                                LargeIcon="{StaticResource Download_Icon}"
+                                Icon="{StaticResource Download_Icon}"
+                                Command="{Binding ExportCommand}" />
+                        </fluent:RibbonGroupBox>
+                    </fluent:RibbonTabItem>
+                </fluent:Ribbon>
+            </Border>
+
+            <!-- Project data (details) -->
+            <StackPanel Grid.Row="1" Margin="15" 
+                        Visibility="{Binding Path=ScreenStatus, Converter={StaticResource StatusToVisibilityConverter}, ConverterParameter='ProjectData'}">
+                <StackPanel>
+                    <TextBlock Text="{x:Static res:Resources.ResultSummary_Title}" FontSize="20" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Static res:Resources.ScannedTime_Label}" />
+                        <TextBlock Text="{Binding Path=ScannedTime}" />
+                    </StackPanel>
+                    <Grid Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <uc:WorkflowInfoBoard Grid.Column="0" Margin="0,0,6,0"
+                                          Title="{x:Static res:Resources.TotalEffort_Title}"
+                                          Description="{x:Static res:Resources.TotalEffort_Description}"
+                                          Data="{Binding Path=EffortRange}"
+                                          Icon="{StaticResource ClockWise_Icon}"/>
+                        <uc:WorkflowInfoBoard Grid.Column="1" Margin="6,0,6,0"
+                                          Title="{x:Static res:Resources.TotalWorkflows_Title}"
+                                          Description="{x:Static res:Resources.TotalWorkflows_Description}"
+                                          Data="{Binding Path=TotalWorkflows}"
+                                          Icon="{StaticResource Workflow_Icon}"/>
+                        <uc:WorkflowInfoBoard Grid.Column="2" Margin="6,0,0,0"
+                                          Title="{x:Static res:Resources.TotalActivities_Title}"
+                                          Description="{x:Static res:Resources.TotalActivities_Description}"
+                                          Data="{Binding Path=TotalActivities}"
+                                          Icon="{StaticResource Activity_Icon}"/>
+                    </Grid>
+                    <DataGrid x:Name="dgProjectPoint" Margin="0,20,0,0" 
+                        VerticalAlignment="Stretch"
+                        AutoGenerateColumns="False" 
+                        GridLinesVisibility="None" 
+                        HeadersVisibility="Column"
+                        ItemsSource="{Binding ProjectList}" 
+                        CanUserSortColumns="False"
+                        CanUserAddRows="False" 
+                        Style="{StaticResource TriggerManagerDataGridStyle}"
+                        ColumnHeaderStyle="{StaticResource TriggerListGridColumnHeaderStyle}"
+                        RowStyle="{StaticResource TriggerListGridRowStyle}" 
+                        CellStyle="{StaticResource TriggerListGridCellStyle}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command=""
+                                            Style="{StaticResource TriggerManagerToggleCheckboxStyle}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ProjectName_Header}" Binding="{Binding ProjectName}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.EstEffort_Header}" Binding="{Binding EffortRange}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ProcessPoint_Header}" Binding="{Binding ProjectPoint}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ProjectLevel_Header}" Binding="{Binding Level}" Width="Auto" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="{Binding Color, Converter={StaticResource CodeToColorConverter}}" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ConditionCount_Header}" Binding="{Binding TotalConditions}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.WorkflowCount_Header}" Binding="{Binding TotalWorkflows}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ActivityCount_Header}" Binding="{Binding TotalActivities}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.ComplexityRank_Header}" Binding="{Binding ComplexityRank.Level}" Width="Auto" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="{Binding ComplexityRank.Color, Converter={StaticResource CodeToColorConverter}}" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- First screen (new scan) -->
+            <StackPanel Grid.Row="2" Background="White" Margin="0,5,0,0" Visibility="{Binding Path=ScreenStatus, Converter={StaticResource StatusToVisibilityConverter}, ConverterParameter='NewScan'}">
+                <TextBlock Text="{x:Static res:Resources.ChooseProject_Title}" Style="{StaticResource ChooseProjectLabelStyle}" Margin="0,80,0,0" />
+                <Border Style="{StaticResource SelectFileFrameStyle}">
+                    <i:Interaction.Behaviors>
+                        <be:DropBehavior DroppedData="{Binding DroppedFilePath, Mode=OneWayToSource}"/>
+                    </i:Interaction.Behaviors>
+                    <StackPanel>
+                        <Image Source="{StaticResource ChooseFile_Icon}" Width="48" Height="48" HorizontalAlignment="Center" />
+                        <Button Style="{StaticResource ConfirmButtonStyle}" 
+                            Command="{Binding Path=ChooseProjectCommand}"
+                            Content="{x:Static res:Resources.SelectProject_Label}" 
+                            FontWeight="Normal" Margin="0,10,0,0" />
+                        <TextBlock Text="{x:Static res:Resources.ChooseProject_Desc}" 
+                                   HorizontalAlignment="Center" Foreground="{StaticResource TriggerListGridHeaderForeground}"
+                                   LineHeight="16" FontSize="12" FontFamily="Segoe UI" Margin="0,8,0,0"></TextBlock>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Scanning list -->
+            <StackPanel Grid.Row="2" Margin="0,10,0,0" Background="White"
+                        Visibility="{Binding Path=ScreenStatus, Converter={StaticResource StatusToVisibilityConverter}, ConverterParameter='ScanList'}">
+                <StackPanel Margin="15,15,15,0">
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{x:Static res:Resources.ReadyToScanTitle}" Style="{StaticResource ChooseProjectLabelStyle}"
+                               HorizontalAlignment="Left" />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <Button Style="{StaticResource QuangButton}" Padding="15,0" Background="#ECECEE" Command="{Binding Path=AddMoreCommand}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{StaticResource AddMore_Icon}" Width="18" Height="18" Margin="0,0,6,0" />
+                                        <TextBlock Text="{Binding Path=AddButtonTitle}" />
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Style="{StaticResource QuangButtonAccent}" Padding="15,0" Margin="10,0,0,0" Command="{Binding Path=StartScanCommand}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{StaticResource StartScan_Icon}" Width="18" Height="18" Margin="0,0,6,0" />
+                                        <TextBlock Text="{x:Static res:Resources.StartScan_Label}" />
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <DataGrid x:Name="dgScanList" Margin="0,20,0,0" 
+                        VerticalAlignment="Stretch"
+                        AutoGenerateColumns="False" 
+                        GridLinesVisibility="None" 
+                        HeadersVisibility="Column"
+                        ItemsSource="{Binding ScanList}" 
+                        CanUserSortColumns="False"
+                        CanUserAddRows="False" 
+                        Style="{StaticResource TriggerManagerDataGridStyle}"
+                        ColumnHeaderStyle="{StaticResource TriggerListGridColumnHeaderStyle}"
+                        RowStyle="{StaticResource TriggerListGridRowStyle}" 
+                        CellStyle="{StaticResource TriggerListGridCellStyle}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static res:Resources.Index_Header}" Binding="{Binding Index}" Width="Auto" IsReadOnly="True" />
+                            <DataGridTextColumn Header="{x:Static res:Resources.ProjectName_Header}" Binding="{Binding Name}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="{x:Static res:Resources.Location_Header}" Binding="{Binding Location}" Width="Auto" IsReadOnly="True"/>
+                            <DataGridTemplateColumn Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource CancelButtonStyle}" HorizontalAlignment="Right" Margin="0" Padding="0"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.RemoveProjectCommand}" CommandParameter="{Binding}">
+                                            <Button.Content>
+                                                <Image Source="{StaticResource Close_Icon}" Width="10" Height="10" />
+                                            </Button.Content>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="{x:Static res:Resources.SelectProject_Description}" HorizontalAlignment="Center" 
+                               Foreground="{StaticResource TriggerListGridHeaderForeground}" Margin="0,50,0,0" 
+                               Visibility="{Binding Path=ScanListEmpty, Converter={StaticResource BoolToVisibilityConverter}}" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Error screen -->
+            <StackPanel Grid.Row="2" Background="White"
+                        Visibility="{Binding Path=ScreenStatus, Converter={StaticResource StatusToVisibilityConverter}, ConverterParameter='ScanError'}">
+                <TextBlock Text="{x:Static res:Resources.SomeErrors_Title}" Style="{StaticResource ChooseProjectLabelStyle}" Margin="0,15,0,20" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="300px" MaxWidth="800">
+                    <DataGrid ItemsSource="{Binding ErrorList}" 
+                              HeadersVisibility="None"
+                              AutoGenerateColumns="False"
+                              GridLinesVisibility="None" 
+                              CanUserSortColumns="False"
+                              CanUserAddRows="False" 
+                              RowStyle="{StaticResource TriggerListGridRowStyle}" 
+                              CellStyle="{StaticResource TriggerListGridCellStyle}"
+                              Style="{StaticResource TriggerManagerDataGridStyle}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <TextBlock Text="An error occurred in the project " />
+                                            <TextBlock Text="{Binding Name}" FontWeight="DemiBold" />
+                                            <TextBlock Text=", click " />
+                                            <TextBlock>
+                                                <Hyperlink Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.OpenFolderCommand}" 
+                                                           CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.LogFolder}">
+                                                    here
+                                                </Hyperlink>
+                                            </TextBlock>
+                                            <TextBlock Text=" to open folder to view the error log file." />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+                <Button Content="{x:Static res:Resources.TryAgain_Label}" Style="{StaticResource QuangButtonAccent}" Width="418px" Margin="0,50,0,0"
+                        Command="{Binding TryAgainCommand}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Loading screen -->
+        <ContentControl
+                Visibility="{Binding Path=IsCalculating, Converter={StaticResource BoolToVisibilityConverter}}"
+                ContentTemplate="{StaticResource LoadingPanel}"
+                Content="{Binding LoadingScreenText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</mah:MetroWindow>

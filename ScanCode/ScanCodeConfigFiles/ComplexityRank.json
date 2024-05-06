@@ -1,0 +1,58 @@
+[
+  {
+    "Level": "Low",
+    "Point": 1,
+    "Color": "#009BDE",
+    "Floor": 1,
+    "Ceiling": 25
+  },
+  {
+    "Level": "Medium",
+    "Point": 1.2,
+    "Color": "#FF6100",
+    "Floor": 25,
+    "Ceiling": 48
+  },
+  {
+    "Level": "High",
+    "Point": 1.4,
+    "Color": "#ED1C24",
+    "Floor": 48,
+    "Ceiling": 96
+  },
+  {
+    "Level": "Very High",
+    "Point": 1.6,
+    "Color": "#ED1C24",
+    "Floor": 96,
+    "Ceiling": 164
+  },
+  {
+    "Level": "Super High",
+    "Point": 1.8,
+    "Color": "#ED1C24",
+    "Floor": 164,
+    "Ceiling": 300
+  },
+  {
+    "Level": "Super Duper High",
+    "Point": 2,
+    "Color": "#ED1C24",
+    "Floor": 300,
+    "Ceiling": 419
+  },
+  {
+    "Level": "Skyrocketing High",
+    "Point": 2.2,
+    "Color": "#ED1C24",
+    "Floor": 410,
+    "Ceiling": 510
+  },
+  {
+    "Level": "Norm Breaker!",
+    "Point": 2.4,
+    "Color": "#ED1C24",
+    "Floor": 510,
+    "Ceiling": 10000000
+  }
+]

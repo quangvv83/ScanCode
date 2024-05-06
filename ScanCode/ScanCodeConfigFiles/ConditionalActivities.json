@@ -1,0 +1,34 @@
+[
+  {
+    "Name": "If",
+    "Namespace": "http://schemas.microsoft.com/netfx/2009/xaml/activities"
+  },
+  {
+    "Name": "ElseIf",
+    "Namespace": "http://schemas.uipath.com/workflow/activities"
+  },
+  {
+    "Name": "Switch",
+    "Namespace": "http://schemas.microsoft.com/netfx/2009/xaml/activities"
+  },
+  {
+    "Name": "While",
+    "Namespace": "http://schemas.microsoft.com/netfx/2009/xaml/activities"
+  },
+  {
+    "Name": "DoWhile",
+    "Namespace": "http://schemas.microsoft.com/netfx/2009/xaml/activities"
+  },
+  {
+    "Name": "InterruptibleWhile",
+    "Namespace": "http://schemas.uipath.com/workflow/activities"
+  },
+  {
+    "Name": "InterruptibleDoWhile",
+    "Namespace": "http://schemas.uipath.com/workflow/activities"
+  },
+  {
+    "Name": "FlowDecision",
+    "Namespace": "http://schemas.microsoft.com/netfx/2009/xaml/activities"
+  },
+]
